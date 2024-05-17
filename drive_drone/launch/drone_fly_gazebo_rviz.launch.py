@@ -16,9 +16,6 @@ def generate_launch_description():
     drone_pkg = get_package_share_directory('sjtu_drone_bringup')
 
 
-
-
-
     drone_bringup= IncludeLaunchDescription(
             PythonLaunchDescriptionSource(
                 os.path.join(drone_pkg, 'launch', 'sjtu_drone_bringup.launch.py')
@@ -32,18 +29,9 @@ def generate_launch_description():
             output="screen"
         )
 
-    drive_drone= Node(
-            package="drive_drone",
-            executable="p1_a_drive_node",
-            output="screen"
-        )
-
     nodes_to_run = [
         drone_bringup,
-        takeoff_cmd,
-        # drive_drone
-
-
+        takeoff_cmd
     ]
 
     return LaunchDescription(nodes_to_run)
